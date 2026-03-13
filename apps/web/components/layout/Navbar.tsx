@@ -88,7 +88,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
-  const dropdownTimeout = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80)
@@ -101,19 +100,25 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [isOpen])
 
-  const openDropdown = (label: string) => {
-    if (dropdownTimeout.current) clearTimeout(dropdownTimeout.current)
-    setActiveDropdown(label)
-  }
+  const navRef = useRef<HTMLUListElement>(null)
 
-  const closeDropdown = () => {
-    dropdownTimeout.current = setTimeout(() => setActiveDropdown(null), 200)
+  const toggleDropdown = (label: string) => {
+    setActiveDropdown((prev) => (prev === label ? null : label))
   }
 
   const closeDropdownNow = () => {
-    if (dropdownTimeout.current) clearTimeout(dropdownTimeout.current)
     setActiveDropdown(null)
   }
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setActiveDropdown(null)
+      }
+    }
+    document.addEventListener('click', handleClickOutside)
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [])
 
   return (
     <header
@@ -136,7 +141,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav — centered */}
-        <ul className="hidden lg:flex items-center gap-0">
+        <ul ref={navRef} className="hidden lg:flex items-center gap-0">
           {navItems.map((item, idx) => {
             const isRight = idx >= navItems.length - 2
             const isActive = activeDropdown === item.label
@@ -145,24 +150,29 @@ export default function Navbar() {
               <li
                 key={item.label}
                 className="relative"
-                onMouseEnter={() => openDropdown(item.label)}
-                onMouseLeave={closeDropdown}
               >
-                <Link
-                  href={item.href}
-                  className="relative flex items-center gap-1.5 px-5 py-3 text-white/90 text-[13px] uppercase tracking-[0.18em] hover:text-brand-gold transition-colors duration-300 group"
-                  onClick={closeDropdownNow}
-                >
-                  {item.label}
-                  {item.dropdown && (
+                {item.dropdown ? (
+                  <button
+                    onClick={() => toggleDropdown(item.label)}
+                    className="relative flex items-center gap-1.5 px-5 py-3 text-white/90 text-[13px] uppercase tracking-[0.18em] hover:text-brand-gold transition-colors duration-300 group"
+                  >
+                    {item.label}
                     <ChevronDown
                       className={`w-3.5 h-3.5 transition-transform duration-200 ${
                         isActive ? 'rotate-180 text-brand-gold' : 'text-white/40'
                       }`}
                     />
-                  )}
-                  <span className="absolute bottom-1 left-4 right-4 h-[1.5px] bg-brand-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                </Link>
+                    <span className="absolute bottom-1 left-4 right-4 h-[1.5px] bg-brand-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  </button>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="relative flex items-center gap-1.5 px-5 py-3 text-white/90 text-[13px] uppercase tracking-[0.18em] hover:text-brand-gold transition-colors duration-300 group"
+                  >
+                    {item.label}
+                    <span className="absolute bottom-1 left-4 right-4 h-[1.5px] bg-brand-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  </Link>
+                )}
 
                 {/* Dropdown panel */}
                 <AnimatePresence>
@@ -177,8 +187,6 @@ export default function Navbar() {
                           ? 'bg-brand-navy text-white'
                           : 'bg-brand-ivory'
                       }`}
-                      onMouseEnter={() => openDropdown(item.label)}
-                      onMouseLeave={closeDropdown}
                     >
                       <div className="py-2">
                         {item.dropdown.map((sub) => (
