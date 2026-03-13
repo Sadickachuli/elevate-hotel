@@ -80,8 +80,8 @@ export default function HomePage() {
               <Image
                 src="/logo-source2.png"
                 alt="Elevate Hotel Crest"
-                width={200}
-                height={240}
+                width={140}
+                height={170}
                 className="object-contain drop-shadow-lg mix-blend-screen"
               />
             </motion.div>

@@ -124,13 +124,13 @@ export default function Navbar() {
       }`}
     >
       <nav className="container-luxury flex items-center justify-between h-[80px] lg:h-[100px]">
-        <Link href="/" className="relative z-50 flex-shrink-0">
+        <Link href="/" className="relative z-50 flex-shrink-0 lg:-ml-8">
           <Image
             src="/logo-source.webp"
             alt="Elevate Hotel by Lidace"
-            width={220}
-            height={80}
-            className="object-contain h-[55px] lg:h-[70px] w-auto"
+            width={260}
+            height={95}
+            className="object-contain h-[60px] lg:h-[80px] w-auto"
             priority
           />
         </Link>
@@ -258,9 +258,9 @@ export default function Navbar() {
                 <Image
                   src="/logo-source.webp"
                   alt="Elevate Hotel by Lidace"
-                  width={160}
-                  height={60}
-                  className="object-contain h-[50px] w-auto"
+                  width={180}
+                  height={70}
+                  className="object-contain h-[55px] w-auto"
                 />
               </div>
 
