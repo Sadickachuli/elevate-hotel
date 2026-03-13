@@ -129,7 +129,7 @@ export default function Navbar() {
       }`}
     >
       <nav className="container-luxury flex items-center justify-between h-[80px] lg:h-[100px]">
-        <Link href="/" className="relative z-50 flex-shrink-0 lg:-ml-8">
+        <Link href="/" className="relative z-50 flex-shrink-0 -ml-4 lg:-ml-8">
           <Image
             src="/logo-source.webp"
             alt="Elevate Hotel by Lidace"
