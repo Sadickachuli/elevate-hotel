@@ -69,7 +69,7 @@ export default function HomePage() {
 
         {/* Hero content — vertically centered */}
         <div className="flex-1 flex items-center relative z-10">
-          <div className="container-luxury w-full text-center">
+          <div className="container-luxury w-full text-center mt-16">
             <motion.h1
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
