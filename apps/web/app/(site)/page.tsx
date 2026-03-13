@@ -87,7 +87,7 @@ export default function HomePage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="relative z-10 container-luxury mb-8"
+          className="relative z-10 mx-6 md:mx-10 lg:mx-16 mb-8"
         >
           <BookingBar variant="hero" />
         </motion.div>

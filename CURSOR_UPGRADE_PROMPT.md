@@ -7,6 +7,7 @@
 
 The current build has serious design issues that must be corrected before anything else:
 
+
 1. **Too dark everywhere** — Black/near-black backgrounds make the site feel heavy and depressing. The only section allowed to be dark is the V-Club landing and the Footer. Every other section must use warm ivory, cream, or beige.
 2. **No Saxon-style booking bar** — The hero needs a horizontal booking widget docked at the bottom (like saxon.co.za) — check-in, check-out, room type, guests, CTA button.
 3. **No dropdown submenus** — The navbar is flat. It needs rich dropdown mega-menus with icons and subcategories like Saxon.

@@ -120,18 +120,17 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? 'bg-brand-navy/97 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
+          : 'bg-brand-navy/30 backdrop-blur-sm'
       }`}
     >
-      <nav className="container-luxury flex items-center justify-between h-[80px] lg:h-[90px]">
-        {/* Logo — larger */}
+      <nav className="container-luxury flex items-center justify-between h-[80px] lg:h-[100px]">
         <Link href="/" className="relative z-50 flex-shrink-0">
           <Image
             src="/logo-source.webp"
             alt="Elevate Hotel by Lidace"
-            width={180}
-            height={70}
-            className="object-contain h-[50px] lg:h-[60px] w-auto"
+            width={220}
+            height={80}
+            className="object-contain h-[55px] lg:h-[70px] w-auto"
             priority
           />
         </Link>
@@ -151,13 +150,13 @@ export default function Navbar() {
               >
                 <Link
                   href={item.href}
-                  className="relative flex items-center gap-1 px-4 py-3 text-white/90 text-[11px] uppercase tracking-[0.2em] hover:text-brand-gold transition-colors duration-300 group"
+                  className="relative flex items-center gap-1.5 px-5 py-3 text-white/90 text-[13px] uppercase tracking-[0.18em] hover:text-brand-gold transition-colors duration-300 group"
                   onClick={closeDropdownNow}
                 >
                   {item.label}
                   {item.dropdown && (
                     <ChevronDown
-                      className={`w-3 h-3 transition-transform duration-200 ${
+                      className={`w-3.5 h-3.5 transition-transform duration-200 ${
                         isActive ? 'rotate-180 text-brand-gold' : 'text-white/40'
                       }`}
                     />
@@ -224,12 +223,12 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-5 flex-shrink-0">
           <a
             href="tel:+250788308193"
-            className="flex items-center gap-2 text-white/60 text-xs hover:text-brand-gold transition-colors"
+            className="flex items-center gap-2 text-white/70 text-sm hover:text-brand-gold transition-colors"
           >
-            <Phone className="w-3.5 h-3.5" />
+            <Phone className="w-4 h-4" />
             +250 788 308 193
           </a>
-          <Link href="/booking" className="btn-primary !py-2.5 !text-xs">
+          <Link href="/booking" className="btn-primary !py-3 !text-[13px]">
             Book Now
           </Link>
         </div>
