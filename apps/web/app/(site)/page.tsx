@@ -38,7 +38,16 @@ export default function HomePage() {
       {/* ─── Section 1: Cinematic Hero ─── */}
       <section ref={heroRef} className="relative h-screen flex flex-col overflow-hidden">
         <motion.div style={{ y: heroY }} className="absolute inset-0 scale-110">
-          <ImagePlaceholder aspect="hero" label="Elevate Hotel — Aerial View" dark className="!min-h-full w-full !aspect-auto" />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            poster=""
+          >
+            <source src="/elevatehotel.mp4" type="video/mp4" />
+          </video>
         </motion.div>
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(14,22,40,0.15) 0%, rgba(14,22,40,0.40) 50%, rgba(14,22,40,0.65) 100%)' }} />
 
