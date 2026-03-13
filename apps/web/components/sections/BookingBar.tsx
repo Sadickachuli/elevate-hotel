@@ -20,7 +20,7 @@ export default function BookingBar({ variant = 'hero' }: BookingBarProps) {
     <div
       className={`rounded ${
         isHero
-          ? 'bg-white/5 sm:bg-white/10 backdrop-blur-md border border-white/10 sm:border-white/15'
+          ? 'bg-white/[0.02] sm:bg-white/10 backdrop-blur-sm sm:backdrop-blur-md border border-white/[0.06] sm:border-white/15'
           : 'bg-white border border-brand-beige shadow-lg'
       }`}
     >

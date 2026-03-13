@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ChevronDown, ArrowRight, MapPin, Phone, Mail, Plane, Flag, Building2, Palmtree } from 'lucide-react'
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder'
 import ElevateOrnament from '@/components/ui/ElevateOrnament'
@@ -70,6 +71,20 @@ export default function HomePage() {
         {/* Hero content — vertically centered */}
         <div className="flex-1 flex items-center relative z-10">
           <div className="container-luxury w-full text-center mt-16">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="flex justify-center mb-6"
+            >
+              <Image
+                src="/logo-source2.png"
+                alt="Elevate Hotel Crest"
+                width={380}
+                height={460}
+                className="object-contain drop-shadow-lg mix-blend-screen"
+              />
+            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}

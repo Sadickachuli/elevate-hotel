@@ -96,7 +96,7 @@
   .text-hero {
     font-size: clamp(32px, 5vw, 56px);
     font-family: var(--font-heading);
-    font-weight: 200;
+    font-weight: 300;
     line-height: 1.2;
     letter-spacing: 0.1em;
     text-transform: uppercase;
