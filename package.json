@@ -1,0 +1,25 @@
+{
+  "name": "elevate-suites-kigali",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "clean": "turbo clean",
+    "dev:web": "turbo dev --filter=web",
+    "dev:studio": "turbo dev --filter=studio",
+    "build:web": "turbo build --filter=web",
+    "build:studio": "turbo build --filter=studio"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "npm@10.0.0"
+}
