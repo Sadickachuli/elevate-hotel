@@ -1,18 +1,18 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Leaf, Sun, Droplets, Recycle, Heart, Globe } from 'lucide-react'
 import HeroSection from '@/components/sections/HeroSection'
 import SectionHeading from '@/components/ui/SectionHeading'
+import ImagePlaceholder from '@/components/ui/ImagePlaceholder'
 import { fadeInUp, stagger } from '@/lib/animations'
 
 const initiatives = [
-  { icon: Sun, title: 'Solar Energy', desc: 'Our property integrates solar panels to reduce reliance on grid energy, contributing to Rwanda\'s clean energy goals.' },
-  { icon: Leaf, title: 'Local Sourcing', desc: 'We source over 80% of our produce from Rwandan farms, supporting local agriculture and reducing carbon footprint.' },
-  { icon: Heart, title: 'Artisan Support', desc: 'From art to furnishings, we partner with Rwandan artisans and craftspeople, providing livelihoods and preserving culture.' },
-  { icon: Droplets, title: 'Water Conservation', desc: 'Advanced water recycling systems and rainwater harvesting reduce our consumption by an estimated 40%.' },
-  { icon: Recycle, title: 'Plastic-Free Operations', desc: 'Guest amenities, packaging, and operations are designed to minimize plastic use — aligning with Rwanda\'s ban.' },
-  { icon: Globe, title: 'Responsible Tourism', desc: 'We partner with local organizations to promote ethical tourism, cultural preservation, and community development.' },
+  { title: 'Solar Energy', desc: 'Our property integrates solar panels to reduce reliance on grid energy, contributing to Rwanda\'s clean energy goals.', imageLabel: 'Solar Panels — Rooftop' },
+  { title: 'Local Sourcing', desc: 'We source over 80% of our produce from Rwandan farms, supporting local agriculture and reducing carbon footprint.', imageLabel: 'Local Farm Produce' },
+  { title: 'Artisan Support', desc: 'From art to furnishings, we partner with Rwandan artisans and craftspeople, providing livelihoods and preserving culture.', imageLabel: 'Rwandan Artisan Craftwork' },
+  { title: 'Water Conservation', desc: 'Advanced water recycling systems and rainwater harvesting reduce our consumption by an estimated 40%.', imageLabel: 'Water Conservation System' },
+  { title: 'Plastic-Free Operations', desc: 'Guest amenities, packaging, and operations are designed to minimize plastic use — aligning with Rwanda\'s ban.', imageLabel: 'Eco-Friendly Amenities' },
+  { title: 'Responsible Tourism', desc: 'We partner with local organizations to promote ethical tourism, cultural preservation, and community development.', imageLabel: 'Community & Responsible Tourism' },
 ]
 
 export default function SustainabilityPage() {
@@ -51,11 +51,15 @@ export default function SustainabilityPage() {
               <motion.div
                 key={item.title}
                 variants={fadeInUp}
-                className="bg-white border border-brand-beige/50 p-8 text-center hover:border-brand-gold/30 transition-colors"
+                className="group bg-white border border-brand-beige/50 hover:border-brand-gold/30 transition-colors overflow-hidden"
               >
-                <item.icon className="w-10 h-10 text-brand-gold mx-auto mb-4" strokeWidth={1.5} />
-                <h3 className="font-heading text-xl text-brand-navy">{item.title}</h3>
-                <p className="mt-3 text-sm text-brand-taupe leading-relaxed">{item.desc}</p>
+                <div className="relative h-52 overflow-hidden">
+                  <ImagePlaceholder label={item.imageLabel} aspect="landscape" className="w-full h-full transition-transform duration-500 group-hover:scale-105" />
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="font-heading text-xl text-brand-navy">{item.title}</h3>
+                  <p className="mt-3 text-sm text-brand-taupe leading-relaxed">{item.desc}</p>
+                </div>
               </motion.div>
             ))}
           </motion.div>

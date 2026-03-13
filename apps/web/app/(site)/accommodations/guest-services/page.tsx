@@ -2,26 +2,23 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import {
-  ConciergeBell, Plane, Shirt, Building2, Flag, CircleDot, ShoppingBag,
-  Car, Moon, Banknote,
-} from 'lucide-react'
 import HeroSection from '@/components/sections/HeroSection'
 import SectionHeading from '@/components/ui/SectionHeading'
 import ElevateOrnament from '@/components/ui/ElevateOrnament'
+import ImagePlaceholder from '@/components/ui/ImagePlaceholder'
 import { fadeInUp, stagger } from '@/lib/animations'
 
 const services = [
-  { icon: ConciergeBell, title: '24/7 Concierge', desc: 'Personal assistance around the clock. From restaurant reservations to city tours, your concierge team is always ready.' },
-  { icon: Plane, title: 'Airport Transfer', desc: 'Meet & greet service from Kigali International Airport. Just 15 minutes away, we ensure a seamless arrival.' },
-  { icon: Shirt, title: 'Laundry & Dry Cleaning', desc: 'Same-day service available for all garments. Express service within 4 hours upon request.' },
-  { icon: Building2, title: 'Business Center', desc: 'Fully equipped 2,680 sqm conference facility on site. Meeting rooms, presentation equipment, and secretarial support.' },
-  { icon: Flag, title: 'Golf Access', desc: 'Adjacent to the prestigious Nyarutarama Golf Course. Tee-time arrangements available through concierge.' },
-  { icon: CircleDot, title: 'Padel Court', desc: 'On-site members\' facility available to hotel guests. Equipment provided, coaching sessions available.' },
-  { icon: ShoppingBag, title: 'Souvenir Boutique', desc: 'Curated Rwandan crafts, luxury items, and artisanal goods. Take a piece of Rwanda home with you.' },
-  { icon: Car, title: 'Private Parking', desc: '80+ secured parking spaces with 24/7 surveillance. Valet parking available for suite guests.' },
-  { icon: Moon, title: 'Wake-Up & Turn-Down', desc: 'Personalised room preparation morning and evening. Your room, always at its finest.' },
-  { icon: Banknote, title: 'Currency Exchange', desc: 'Available at reception during operating hours. Major currencies accepted with competitive rates.' },
+  { title: '24/7 Concierge', desc: 'Personal assistance around the clock. From restaurant reservations to city tours, your concierge team is always ready.', imageLabel: 'Concierge Desk' },
+  { title: 'Airport Transfer', desc: 'Meet & greet service from Kigali International Airport. Just 15 minutes away, we ensure a seamless arrival.', imageLabel: 'Airport Transfer Vehicle' },
+  { title: 'Laundry & Dry Cleaning', desc: 'Same-day service available for all garments. Express service within 4 hours upon request.', imageLabel: 'Laundry Service' },
+  { title: 'Business Center', desc: 'Fully equipped 2,680 sqm conference facility on site. Meeting rooms, presentation equipment, and secretarial support.', imageLabel: 'Business Center & Conference' },
+  { title: 'Golf Access', desc: 'Adjacent to the prestigious Nyarutarama Golf Course. Tee-time arrangements available through concierge.', imageLabel: 'Nyarutarama Golf Course' },
+  { title: 'Padel Court', desc: 'On-site members\' facility available to hotel guests. Equipment provided, coaching sessions available.', imageLabel: 'Padel Court' },
+  { title: 'Souvenir Boutique', desc: 'Curated Rwandan crafts, luxury items, and artisanal goods. Take a piece of Rwanda home with you.', imageLabel: 'Souvenir Boutique' },
+  { title: 'Private Parking', desc: '80+ secured parking spaces with 24/7 surveillance. Valet parking available for suite guests.', imageLabel: 'Private Parking Area' },
+  { title: 'Wake-Up & Turn-Down', desc: 'Personalised room preparation morning and evening. Your room, always at its finest.', imageLabel: 'Turn-Down Service' },
+  { title: 'Currency Exchange', desc: 'Available at reception during operating hours. Major currencies accepted with competitive rates.', imageLabel: 'Reception & Currency Exchange' },
 ]
 
 export default function GuestServicesPage() {
@@ -60,14 +57,12 @@ export default function GuestServicesPage() {
               <motion.div
                 key={service.title}
                 variants={fadeInUp}
-                className="flex gap-6 p-6 bg-white border border-brand-beige/50 hover:border-brand-gold/30 transition-colors"
+                className="group bg-white border border-brand-beige/50 hover:border-brand-gold/30 transition-colors overflow-hidden"
               >
-                <div className="flex-shrink-0">
-                  <div className="w-14 h-14 flex items-center justify-center bg-brand-cream">
-                    <service.icon className="w-6 h-6 text-brand-gold" strokeWidth={1.5} />
-                  </div>
+                <div className="relative h-48 overflow-hidden">
+                  <ImagePlaceholder label={service.imageLabel} aspect="landscape" className="w-full h-full transition-transform duration-500 group-hover:scale-105" />
                 </div>
-                <div>
+                <div className="p-6">
                   <h3 className="font-heading text-xl text-brand-navy">{service.title}</h3>
                   <p className="mt-2 text-sm text-brand-taupe leading-relaxed">{service.desc}</p>
                 </div>

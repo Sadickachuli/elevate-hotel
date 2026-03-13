@@ -2,17 +2,17 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Building2, Wine, Sparkles, Briefcase } from 'lucide-react'
 import HeroSection from '@/components/sections/HeroSection'
 import SectionHeading from '@/components/ui/SectionHeading'
 import ElevateOrnament from '@/components/ui/ElevateOrnament'
+import ImagePlaceholder from '@/components/ui/ImagePlaceholder'
 import { fadeInUp, stagger } from '@/lib/animations'
 
 const venues = [
-  { icon: Building2, name: 'Private Lounge', capacity: 'Up to 30 guests', desc: 'Intimate setting with dedicated service, perfect for corporate dinners and private celebrations.' },
-  { icon: Wine, name: 'Gemilli Terrace', capacity: 'Up to 60 guests', desc: 'Open-air garden terrace for receptions, cocktail parties, and alfresco dining events.' },
-  { icon: Sparkles, name: 'Cave Bar', capacity: 'Up to 40 guests', desc: 'Underground exclusivity for cocktail soirées, launches, and unforgettable gatherings.' },
-  { icon: Briefcase, name: 'Full Venue Buyout', capacity: 'Up to 150 guests', desc: 'Exclusive access to all dining venues for large-scale events, weddings, and galas.' },
+  { name: 'Private Lounge', capacity: 'Up to 30 guests', desc: 'Intimate setting with dedicated service, perfect for corporate dinners and private celebrations.', imageLabel: 'Private Lounge — Event Setup' },
+  { name: 'Gemilli Terrace', capacity: 'Up to 60 guests', desc: 'Open-air garden terrace for receptions, cocktail parties, and alfresco dining events.', imageLabel: 'Gemilli Terrace — Evening Reception' },
+  { name: 'Cave Bar', capacity: 'Up to 40 guests', desc: 'Underground exclusivity for cocktail soirées, launches, and unforgettable gatherings.', imageLabel: 'Cave Bar — Cocktail Soirée' },
+  { name: 'Full Venue Buyout', capacity: 'Up to 150 guests', desc: 'Exclusive access to all dining venues for large-scale events, weddings, and galas.', imageLabel: 'Full Venue — Gala Setup' },
 ]
 
 const eventTypes = ['Corporate Dinner', 'Private Celebration', 'Brunch Event', 'Business Lunch', 'Wedding Dinner', 'Cocktail Reception', 'Product Launch', 'Other']
@@ -77,12 +77,16 @@ export default function SpecialEventsPage() {
               <motion.div
                 key={venue.name}
                 variants={fadeInUp}
-                className="bg-white border border-brand-beige/50 p-8 hover:border-brand-gold/30 transition-colors"
+                className="group bg-white border border-brand-beige/50 hover:border-brand-gold/30 transition-colors overflow-hidden"
               >
-                <venue.icon className="w-8 h-8 text-brand-gold mb-4" strokeWidth={1.5} />
-                <h3 className="font-heading text-xl text-brand-navy">{venue.name}</h3>
-                <p className="text-xs text-brand-gold tracking-wider uppercase mt-1">{venue.capacity}</p>
-                <p className="mt-3 text-sm text-brand-taupe leading-relaxed">{venue.desc}</p>
+                <div className="relative h-56 overflow-hidden">
+                  <ImagePlaceholder label={venue.imageLabel} aspect="landscape" className="w-full h-full transition-transform duration-500 group-hover:scale-105" />
+                </div>
+                <div className="p-8">
+                  <h3 className="font-heading text-xl text-brand-navy">{venue.name}</h3>
+                  <p className="text-xs text-brand-gold tracking-wider uppercase mt-1">{venue.capacity}</p>
+                  <p className="mt-3 text-sm text-brand-taupe leading-relaxed">{venue.desc}</p>
+                </div>
               </motion.div>
             ))}
           </motion.div>

@@ -2,21 +2,20 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Utensils, Dumbbell, CircleDot, Building2, Gamepad2, ConciergeBell, Sparkles, Hotel } from 'lucide-react'
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder'
 import GoldCrestWatermark from '@/components/ui/GoldCrestWatermark'
 import ElevateOrnament from '@/components/ui/ElevateOrnament'
 import { fadeInUp, stagger } from '@/lib/animations'
 
 const benefits = [
-  { icon: Utensils, title: 'Private Restaurant & Lounge', desc: '1,900 sqm exclusive dining facility reserved for members.' },
-  { icon: Dumbbell, title: 'Priority V-Wellness Access', desc: 'First-priority booking for all spa treatments and wellness programmes.' },
-  { icon: CircleDot, title: 'Members-Only Padel Court', desc: 'Private court access with equipment provided and coaching available.' },
-  { icon: Building2, title: 'Business Center & Conference', desc: 'Priority access to conference facilities and meeting rooms.' },
-  { icon: Gamepad2, title: 'Golf Simulator Suite', desc: '240 sqm state-of-the-art golf simulation experience.' },
-  { icon: ConciergeBell, title: 'Personal Concierge', desc: 'Dedicated member liaison and private parking privileges.' },
-  { icon: Sparkles, title: 'Exclusive Events', desc: 'Members-only soirées, wine dinners, networking evenings, and cultural events.' },
-  { icon: Hotel, title: 'Priority Hotel Rates', desc: 'Preferential rates on all room categories for members and their guests.' },
+  { title: 'Private Restaurant & Lounge', desc: '1,900 sqm exclusive dining facility reserved for members.', imageLabel: 'V-Club Restaurant & Lounge' },
+  { title: 'Priority V-Wellness Access', desc: 'First-priority booking for all spa treatments and wellness programmes.', imageLabel: 'V-Wellness Spa Access' },
+  { title: 'Members-Only Padel Court', desc: 'Private court access with equipment provided and coaching available.', imageLabel: 'Padel Court' },
+  { title: 'Business Center & Conference', desc: 'Priority access to conference facilities and meeting rooms.', imageLabel: 'Business Center' },
+  { title: 'Golf Simulator Suite', desc: '240 sqm state-of-the-art golf simulation experience.', imageLabel: 'Golf Simulator Suite' },
+  { title: 'Personal Concierge', desc: 'Dedicated member liaison and private parking privileges.', imageLabel: 'Personal Concierge Service' },
+  { title: 'Exclusive Events', desc: 'Members-only soirées, wine dinners, networking evenings, and cultural events.', imageLabel: 'Exclusive Members Event' },
+  { title: 'Priority Hotel Rates', desc: 'Preferential rates on all room categories for members and their guests.', imageLabel: 'Hotel Suite — Members Rate' },
 ]
 
 const tiers = [
@@ -128,11 +127,15 @@ export default function VClubPage() {
               <motion.div
                 key={b.title}
                 variants={fadeInUp}
-                className="border border-white/10 p-6 hover:border-brand-gold/30 transition-colors text-center"
+                className="group border border-white/10 hover:border-brand-gold/30 transition-colors overflow-hidden"
               >
-                <b.icon className="w-8 h-8 text-brand-gold mx-auto mb-4" strokeWidth={1.5} />
-                <h3 className="font-heading text-lg text-white">{b.title}</h3>
-                <p className="mt-2 text-xs text-white/40 leading-relaxed">{b.desc}</p>
+                <div className="relative h-44 overflow-hidden">
+                  <ImagePlaceholder label={b.imageLabel} aspect="landscape" dark className="w-full h-full transition-transform duration-500 group-hover:scale-105" />
+                </div>
+                <div className="p-5 text-center">
+                  <h3 className="font-heading text-lg text-white">{b.title}</h3>
+                  <p className="mt-2 text-xs text-white/40 leading-relaxed">{b.desc}</p>
+                </div>
               </motion.div>
             ))}
           </motion.div>
