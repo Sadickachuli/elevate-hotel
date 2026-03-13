@@ -115,26 +115,37 @@ export default function HomePage() {
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
           variants={stagger}
-          className="container-luxury text-center max-w-4xl mx-auto relative"
+          className="container-luxury relative"
         >
-          <motion.div variants={fadeIn}>
-            <ElevateOrnament variant="full" />
-          </motion.div>
-          <motion.p variants={fadeInUp} className="text-overline mb-5">Elevate Hotel by Lidace</motion.p>
-          <motion.h2 variants={fadeInUp} className="text-section-title text-brand-charcoal">
-            A New Standard of Rwandan Luxury
-          </motion.h2>
-          <motion.div variants={fadeIn}>
-            <ElevateOrnament variant="minimal" />
-          </motion.div>
-          <motion.p variants={fadeInUp} className="text-pullquote text-brand-taupe mt-4">
-            Situated in the vibrant city of Kigali, Elevate Hotel Suite provides a stunning panoramic view of the Golf Course. Crafted to deliver an unparalleled blend of luxury and privacy, our establishment offers an exceptional experience not readily available elsewhere in Rwanda — a comprehensive range of outstanding services, all under one extraordinary roof.
-          </motion.p>
-          <motion.div variants={fadeInUp} className="flex flex-wrap justify-center gap-12 md:gap-20 mt-14">
-            <StatCounter end={8364} suffix="" label="Sqm Total GFA" />
-            <StatCounter end={40} suffix="+" label="Keys" />
-            <StatCounter end={5} suffix="" label="Dining Venues" />
-          </motion.div>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Left — Image */}
+            <motion.div variants={fadeInLeft} className="relative aspect-[4/5] overflow-hidden rounded-sm">
+              <ImagePlaceholder label="Elevate Hotel — Lobby & Architecture" aspect="portrait" className="w-full h-full" />
+              <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-brand-navy/20 to-transparent" />
+            </motion.div>
+
+            {/* Right — Content */}
+            <div className="text-center lg:text-left">
+              <motion.div variants={fadeIn}>
+                <ElevateOrnament variant="full" />
+              </motion.div>
+              <motion.p variants={fadeInUp} className="text-overline mb-5">Elevate Hotel by Lidace</motion.p>
+              <motion.h2 variants={fadeInUp} className="text-section-title text-brand-charcoal">
+                A New Standard of Rwandan Luxury
+              </motion.h2>
+              <motion.div variants={fadeIn}>
+                <ElevateOrnament variant="minimal" />
+              </motion.div>
+              <motion.p variants={fadeInUp} className="text-pullquote text-brand-taupe mt-4">
+                Situated in the vibrant city of Kigali, Elevate Hotel Suite provides a stunning panoramic view of the Golf Course. Crafted to deliver an unparalleled blend of luxury and privacy, our establishment offers an exceptional experience not readily available elsewhere in Rwanda — a comprehensive range of outstanding services, all under one extraordinary roof.
+              </motion.p>
+              <motion.div variants={fadeInUp} className="flex flex-wrap justify-center lg:justify-start gap-12 md:gap-16 mt-14">
+                <StatCounter end={8364} suffix="" label="Sqm Total GFA" />
+                <StatCounter end={40} suffix="+" label="Keys" />
+                <StatCounter end={5} suffix="" label="Dining Venues" />
+              </motion.div>
+            </div>
+          </div>
         </motion.div>
       </section>
 
